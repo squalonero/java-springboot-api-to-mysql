@@ -17,11 +17,20 @@ import lombok.Setter;
 public class BookingDto {
     @Id
     public Long id;
-    public UserDto user; // todo
+    public UserDto user;
     public BookingStatus status;
     public Date date;
     public int numPeople;
-    public ArrayList<PassengerDto> passengers; // todo
+    public ArrayList<PassengerDto> passengers;
+
+    public BookingDto(Long id, UserDto user, BookingStatus status, Date date, int numPeople, ArrayList<PassengerDto> passengers) {
+        this.id = id;
+        this.user = user;
+        this.status = status;
+        this.date = date;
+        this.numPeople = numPeople;
+        this.passengers = passengers;
+    }
 
     public Long getId() {
         return this.id;

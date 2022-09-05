@@ -1,10 +1,5 @@
 package com.sqlnr.app.service;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.Objects;
-
-import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Page;
@@ -15,6 +10,7 @@ import org.springframework.util.StringUtils;
 import com.sqlnr.app.model.Booking;
 import com.sqlnr.app.model.BookingDto;
 import com.sqlnr.app.repository.BookingRepository;
+import com.sqlnr.app.utils.ObjectMapper;
 
 @Service
 public class BookingServiceDb implements BookingService {
@@ -63,22 +59,9 @@ public class BookingServiceDb implements BookingService {
         //@todo: server side validation
 
         Booking dbBooking = repo.findById(bookingDto.getId()).get();
-        //iterate over the object and get the properties
-        for (final Field field : Booking.class.getDeclaredFields()) {
-            //get each propeerty name
-            final String fieldName = field.getName();
 
-            if (fieldName.equals("id")) {
-                continue; // skip id updates
-            }
-            //assemble the getter method name
-            final Method getter = bookingDto.getClass().getDeclaredMethod("get" + StringUtils.capitalize(fieldName));
-            final Object fieldValue = getter.invoke(bookingDto); // invoke the method for the given instance
+        dbBooking = (Booking) ObjectMapper.mapNonEmptyFieldsToEntity(bookingDto, dbBooking);
 
-            if (Objects.nonNull(fieldValue) && !fieldValue.equals("") && !fieldValue.equals(0)) {
-                BeanUtils.setProperty(dbBooking, fieldName, fieldValue);
-            }
-        }
         repo.save(dbBooking);
         return dbBooking;
     }

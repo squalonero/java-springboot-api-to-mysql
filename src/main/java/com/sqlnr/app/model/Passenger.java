@@ -19,4 +19,10 @@ public class Passenger {
     public String name;
     public String lastName;
     public Date birthDate;
+
+    public Passenger(String name, String lastName, Date birthDate) {
+        this.name = name;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+    }
 }

@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import com.sqlnr.app.model.Booking;
 import com.sqlnr.app.model.BookingDto;
 
+
 public interface BookingService {
 
     public Page<Booking> findBy(int page, String by, String value);

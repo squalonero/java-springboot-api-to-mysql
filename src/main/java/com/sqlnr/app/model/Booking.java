@@ -25,11 +25,20 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
-    public User user; // todo
+    public User user;
     public BookingStatus status;
     public Date date;
     public int numPeople;
-    public ArrayList<Passenger> passengers; // todo
+    public ArrayList<Passenger> passengers;
+
+    public Booking(Long id, User user, BookingStatus status, Date date, int numPeople, ArrayList<Passenger> passengers) {
+        this.id = id;
+        this.user = user;
+        this.status = status;
+        this.date = date;
+        this.numPeople = numPeople;
+        this.passengers = passengers;
+    }
 
     public Long getId() {
         return this.id;

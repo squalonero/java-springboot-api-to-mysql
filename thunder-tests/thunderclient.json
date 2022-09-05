@@ -42,12 +42,12 @@
     "method": "POST",
     "sortNum": 30000,
     "created": "2022-09-01T13:10:56.977Z",
-    "modified": "2022-09-03T19:32:50.556Z",
+    "modified": "2022-09-05T10:31:17.982Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\": \"Dio inciampa\",\n  \"author\":\"Oidocrop\",\n  \"pages\": 1,\n  \"genres\": [\"meme\", \"cringe\"],\n  \"rating\": 9\n}\n",
+      "raw": "{\n  \"title\": \"Oid inciampa\",\n  \"author\":\"Oidocrop\",\n  \"pages\": 1,\n  \"genres\": [\"meme\", \"cringe\"],\n  \"rating\": 9\n}\n",
       "form": []
     },
     "tests": []
